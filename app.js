@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const admin = require('./routes/admin')
 const path = require('path')
+var shell = require('shelljs')
 //const mongoose = require("mongoose")
 
 
@@ -34,4 +35,5 @@ app.use('/admin', admin)
 const PORTA = 8081
 app.listen(PORTA, () =>{
     console.log("Servidor rodando!")
+    
 })
