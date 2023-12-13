@@ -20,6 +20,9 @@ var shell = require('shelljs')
     app.set('view engine', 'handlebars')
     //mongoose
 
+    
+
+
     //public
     app.use(express.static(path.join(__dirname,'public')))
 

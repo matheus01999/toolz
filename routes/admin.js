@@ -6,4 +6,14 @@ router.get('/', (req, res) => {
 })
 
 
+//Rotas princiapais
+
+router.get('/hosts', (req,res) => {
+    res.render('admin/hosts')
+})
+
+router.get('/host/add', (req,res) => {
+    res.render("admin/addhost")
+})
+
 module.exports = router
