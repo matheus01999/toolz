@@ -1,3 +1,50 @@
-<h2>Lista de hosts</h2>
-<hr>
-<button class="btn btn-primary"><a href="/admin/addhost">ADD</a></button>
+{{#each hosts}}
+<div class="container">
+    <h2>Lista de hosts</h2>
+    <a class="btn btn-primary mb-4" href="/admin/host/add">Adicionar</a>
+<div class="container  showhst">
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{{apelido}}}</h5>
+    <p class="card-text">{{desc}}</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".showHost">Show</button>
+  </div>
+</div>
+
+<!-- Large modal -->
+
+
+<div class="modal fade showHost" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">Informações do equipamento</div>
+      <form class="m-4">
+  <div class="form-group">
+    <label for="apelido">Apelido</label>
+    <input type="text" class="form-control" id="apelido"   value="{{{apelido}}}">
+    <br>
+
+    <label for="apelido">Hostname</label>
+    <input type="text" class="form-control" id="apelido"   value="{{{hostname}}}" readonly>
+    <br>
+
+        <label for="apelido">IP</label>
+    <input type="text" class="form-control" id="hostIP"   value="{{{hostIP}}}" readonly>
+    <br>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    </div>
+  </div>
+</div>
+
+{{else}}
+<div class="container">
+    <h2>Lista de hosts</h2>
+<div class="container  showhst">
+    <a class="btn btn-primary" href="/admin/host/add">Adicionar</a>
+</div>
+
+
+{{/each}}

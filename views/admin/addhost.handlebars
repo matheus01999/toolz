@@ -2,9 +2,13 @@
     <form action="/admin/host/new" method="post">
     <h2>Adicionar Equipamento</h2>
 <div class="form-group">
-    <label for="hostname">Hostname</label>
-    <input type="text" class="form-control" id="hostname" name="hostname" namaria-describedby="emailHelp" placeholder="Conexão">
-    <small id="emailHelp" class="form-text text-muted">Digite o endereço de ip ou hostname </small>
+    <label for="apelido">Apelido</label>
+    <input type="text" class="form-control" id="apelido" name="apelido"  placeholder="Conexão">
+    <small class="form-text text-muted">Digite o apelido do equipamento</small>
+
+        <label for="apelido">IP</label>
+    <input type="text" class="form-control" id="hostIP" name="hostIP"  placeholder="192.x.x.x">
+    <small class="form-text text-muted">Digite o IP do equipamento</small>
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
   <button type="submit" class="btn btn-primary">Fake ADD</button>

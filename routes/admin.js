@@ -13,7 +13,11 @@ router.get('/', (req, res) => {
 //Rotas princiapais
 
 router.get('/hosts', (req,res) => {
-    res.render('admin/hosts')
+    Hosts.find().lean().then((hosts) => {
+        res.render('admin/hosts', {hosts: hosts})
+
+    }).catch((err) => {console.log("ERRO so listar hosts" + err)})
+    
 })
 
 router.get('/host/add', (req,res) => {
@@ -22,6 +26,8 @@ router.get('/host/add', (req,res) => {
 
 router.post('/host/new', (req, res) => {
     const novoHost = {
+        apelido: req.body.apelido,
+        hostIP: req.body.hostIP,
         hostname: req.body.hostname
     }
 
