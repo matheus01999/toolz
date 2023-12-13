@@ -1,1 +1,0 @@
-// Pegar ip da maquina 

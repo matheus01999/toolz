@@ -6,6 +6,7 @@ const app = express()
 const admin = require('./routes/admin')
 const path = require('path')
 var shell = require('shelljs')
+const { default: mongoose } = require('mongoose')
 //const mongoose = require("mongoose")
 
 
@@ -19,6 +20,12 @@ var shell = require('shelljs')
     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
     app.set('view engine', 'handlebars')
     //mongoose
+    mongoose.Promise = global.Promise;
+    mongoose.connect('mongodb://labtl:27017/').then(() => {
+        console.log("Conectado ao mongo")
+    }).catch((err)=>{
+        console.log("Erro ao se conectar com o banco" + err)
+    })
 
     
 

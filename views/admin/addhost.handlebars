@@ -1,10 +1,12 @@
-<div class="container mt-4">
-    <form action="/admin/host/novo" method="post">
+<div class="container card mt-4 p-4">
+    <form action="/admin/host/new" method="post">
+    <h2>Adicionar Equipamento</h2>
 <div class="form-group">
     <label for="hostname">Hostname</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Conexão">
+    <input type="text" class="form-control" id="hostname" name="hostname" namaria-describedby="emailHelp" placeholder="Conexão">
     <small id="emailHelp" class="form-text text-muted">Digite o endereço de ip ou hostname </small>
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
+  <button type="submit" class="btn btn-primary">Fake ADD</button>
 </form>
 </div>
