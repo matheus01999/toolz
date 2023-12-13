@@ -13,35 +13,34 @@ collumn = db['hosts']
 hostname = socket.gethostname()
 ipHost = socket.gethostbyname(socket.gethostname())
 
+# validar se o memso já est acadastrado no banco
+querryIp = {"hostIP" : ipHost}
 
-#validar se maquina ja esta no banco
-queryIP = {"hostIP": ipHost}
-ipVal = queryIP['hostIP']
-
-if(ipHost == ipVal):
-    #buscando host no banco
-    buscar = collumn.find()
-    for doc in buscar:
-        print(type(doc))
-    # atualizando host 
-    queryHostname = {'hostname' : 'validar'}
-    newHostname = {"$set": {'hostname': hostname}}
-    collumn.update_one(queryHostname, newHostname)
-
-    
-    #print("Sucesso")
+mySearch = collumn.find(querryIp)
+for ip in mySearch:
+    ipVal = ip['hostIP']
+    #se ja estiver cadastrado verificar status da validacao
+    queryHostname = {"hostname" : 'validar'}
+    queryNewHostname = {"$set" : {"hostname" : hostname}}
+    collumn.update_one(queryHostname, queryNewHostname)
+    break
 else:
-    print("Não deu certo")
+    #caso não cadastrado realizar cadastro
+    queryHost = {"apelido" : hostname, "hostname" : hostname, "hostIP" : ipHost}
+    insertHost = collumn.insert_one(queryHost)
 
 
 
 
 
-# adicionar o host ao banco
 
-# Tratar as informações
 
-# enviar para o host que esta no banco 
+
+
+
+
+
+
 
 
 
