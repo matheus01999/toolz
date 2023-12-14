@@ -2,15 +2,18 @@ const express = require('express')
 const shell = require('shelljs')
 const router = express.Router()
 const mongoose = require('mongoose')
+
+require('../models/Services')
 require('../models/Hosts')
 const Hosts = mongoose.model('hosts')
+const Services = mongoose.model('services')
 
 router.get('/', (req, res) => {
     res.render("admin/index")
 })
 
 
-//Rotas princiapais
+//Rotas do host
 
 router.get('/hosts', (req,res) => {
     Hosts.find().lean().then((hosts) => {
@@ -30,10 +33,7 @@ router.post('/host/new', (req, res) => {
         hostIP: req.body.hostIP,
         hostname: req.body.hostname
     }
-
-    //validar se o plugin esta instalado na maquina
-
-    
+  
 
     new Hosts(novoHost).save().then(() => {
         console.log('um novo host foi adicionado ')
@@ -42,6 +42,14 @@ router.post('/host/new', (req, res) => {
         console.log("Erro ao adicionar host" + erro)
     })
 
+})
+
+//Rotas de Serviço
+router.get('/services', (req, res) =>{
+    Services.find().lean().then((services) =>{
+        res.render('admin/services', {services: services})
+    }).catch((err) => {console.log("Erro ao carregar serviços" + err)})
+    
 })
 
 module.exports = router
