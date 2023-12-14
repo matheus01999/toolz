@@ -13,21 +13,34 @@ collumn = db['hosts']
 hostname = socket.gethostname()
 ipHost = socket.gethostbyname(socket.gethostname())
 
-# validar se o memso já est acadastrado no banco
+# validar se o memso já esta acadastrado no banco
 querryIp = {"hostIP" : ipHost}
 
 mySearch = collumn.find(querryIp)
 for ip in mySearch:
     ipVal = ip['hostIP']
-    #se ja estiver cadastrado verificar status da validacao
-    queryHostname = {"hostname" : 'validar'}
-    queryNewHostname = {"$set" : {"hostname" : hostname}}
-    collumn.update_one(queryHostname, queryNewHostname)
-    break
+    
+
+    #validar status do host
+    statusHost = ip['active'] #pegar o valor do status
+    if(statusHost == False):
+        #atualizar status do host
+        queryStatus = {'active' : statusHost}
+        queryUpdateStatus = {"$set" : {'active': True }}
+        collumn.update_one(queryStatus, queryUpdateStatus)
+
+        #Prencher demais informações
+        queryHostname = {"hostname" : 'validar'}
+        queryNewHostname = {"$set" : {"hostname" : hostname}}
+        collumn.update_one(queryHostname, queryNewHostname)
+
+    else:
+        print("host ativo")
+    
 else:
     #caso não cadastrado realizar cadastro
-    queryHost = {"apelido" : hostname, "hostname" : hostname, "hostIP" : ipHost}
-    insertHost = collumn.insert_one(queryHost)
+    print("host não cadastrado")
+    
 
 
 

@@ -18,7 +18,15 @@ const Host = new Schema({
 
     data:{
         type: Date,
+        require: true,
         default: Date.now()
+    },
+
+    active:{
+        type: Boolean,
+        require: true,
+        default : false
+
     }
 })
 
