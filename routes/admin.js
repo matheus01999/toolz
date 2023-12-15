@@ -47,7 +47,13 @@ router.post('/host/new', (req, res) => {
 //Rotas de Serviço
 router.get('/services', (req, res) =>{
     Services.find().lean().then((services) =>{
+        //var service = shell.exec('wmic service get displayname,name,state | findstr "Intel WSL >> serviçes.xml"')
+        //Services.insertMany(service)
         res.render('admin/services', {services: services})
+
+        
+
+
     }).catch((err) => {console.log("Erro ao carregar serviços" + err)})
     
 })

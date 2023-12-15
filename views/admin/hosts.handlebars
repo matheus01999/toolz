@@ -1,50 +1,78 @@
 {{#each hosts}}
-<div class="container">
-    <h2>Lista de hosts</h2>
-    <a class="btn btn-primary mb-4" href="/admin/host/add">Adicionar</a>
-<div class="container  showhst">
-    <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{{apelido}}}</h5>
-    <p class="card-text">{{desc}}</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".showHost">Show</button>
-  </div>
-</div>
-
-<!-- Large modal -->
-
-
-<div class="modal fade showHost" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">Informações do equipamento</div>
-      <form class="m-4">
-  <div class="form-group">
-    <label for="apelido">Apelido</label>
-    <input type="text" class="form-control" id="apelido"   value="{{{apelido}}}">
-    <br>
-
-    <label for="apelido">Hostname</label>
-    <input type="text" class="form-control" id="apelido"   value="{{{hostname}}}" readonly>
-    <br>
-
-        <label for="apelido">IP</label>
-    <input type="text" class="form-control" id="hostIP"   value="{{{hostIP}}}" readonly>
-    <br>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div style="justify-content: space-around; display:flex;" >
+  <div class="card bg-light m-3" style="width: 15rem;"> 
+    <div class="card-header">{{apelido}}
+      <span class="badge badge-success" style="float: right;">Active</span>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Card</h5>
+      <p class="card-text">{{desc}}</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".showHost">Show</button>
     </div>
   </div>
-</div>
 
-{{else}}
-<div class="container">
+
+
+  <!-- Large modal -->
+
+
+  <div class="modal fade showHost" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">Informações do equipamento</div>
+        <form class="m-4">
+          <div class="form-group">
+            <label for="apelido">Apelido</label>
+            <input type="text" class="form-control" id="apelido" value="{{{apelido}}}">
+            <br>
+            <label for="apelido">Hostname</label>
+            <input type="text" class="form-control" id="apelido" value="{{{hostname}}}" readonly>
+            <br>
+            <label for="apelido">IP</label>
+            <input type="text" class="form-control" id="hostIP" value="{{{hostIP}}}" readonly>
+            <br>
+            <div>Gerenciador</div>
+            <hr>
+            <div>
+              <h6>Memory</h6>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 30%" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <br>
+            </div>
+
+            <div>
+              <h6>CPU</h6>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 30%" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <br>
+            </div>
+
+            <div>
+              <h6>Disk</h6>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 30%" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+              <br>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{else}}
+  <div class="container">
     <h2>Lista de hosts</h2>
-<div class="container  showhst">
-    <a class="btn btn-primary" href="/admin/host/add">Adicionar</a>
-</div>
+    <div class="container  showhst">
+      <a class="btn btn-primary" href="/admin/host/add">Adicionar</a>
+    </div>
 
 
-{{/each}}
+    {{/each}}

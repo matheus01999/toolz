@@ -27,6 +27,7 @@ const { default: mongoose } = require('mongoose')
         console.log("Erro ao se conectar com o banco" + err)
     })
 
+
     
 
 
