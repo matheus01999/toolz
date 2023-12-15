@@ -1,0 +1,119 @@
+<div style="display: flex;">
+    {{#each hosts}}
+    <div class="card bg-light m-3" style="width: 15rem; display:flex">
+        <div class="card-header"><a href="admin/host/view/{{_id}}">{{apelido}}</a>
+            <span class="badge badge-success" style="float: right;">Active</span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card</h5>
+            <p class="card-text">{{desc}}</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".showHost">Show</button>
+        </div>
+    </div>
+
+    {{else}}
+    <div class="container">
+        <h3>Nenhum host cadastrado</h3>
+        <a class="btn btn-primary" href="/admin/host/add">Adicionar</a>
+    </div>
+
+    {{/each}}
+
+
+</div>
+
+<div class="m-4">
+    <h3>Serviços</h3>
+    <hr>
+    <table class="table" style="text-align: center;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">PUID</th>
+                <th scope="col">NOME</th>
+                <th scope="col">HOST</th>
+                <th scope="col">STATUS</th>
+                <th scope="col">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each services}}
+            <tr>
+                <th scope="row">{{PID}}</th>
+                <td>{{nome}}</td>
+                <td>{{host}}</td>
+                <td>{{status}}</td>
+                <td >
+                    <form >
+                        <select class="form-control-sm" >
+                            <option>Select grande</option>
+                            <option>Start</option>
+                            <option>Stop</option>
+                            <option>Restart</option>
+                        </select>
+                        
+                        <button type="submit" class="btn btn-primary m-3" >Aplicar</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<!-- Large modal -->
+
+<div class="modal fade showHost" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">Informações do equipamento</div>
+            <form class="m-4">
+                <div class="form-group">
+                    <label for="apelido">Apelido</label>
+                    <input type="text" class="form-control" id="apelido" value="{{{apelido}}}">
+                    <br>
+                    <label for="apelido">Hostname</label>
+                    <input type="text" class="form-control" id="apelido" value="{{{hostname}}}" readonly>
+                    <br>
+                    <label for="apelido">IP</label>
+                    <input type="text" class="form-control" id="hostIP" value="{{{hostIP}}}" readonly>
+                    <br>
+                    <div>Gerenciador</div>
+                    <hr>
+                    <div>
+                        <h6>Memory</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div>
+                        <h6>CPU</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div>
+                        <h6>Disk</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-primary" style="float: right;">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -8,19 +8,19 @@ const Service = new Schema({
         default: '#'
     },
 
-    Name:{
+    nome:{
         type: String,
         require: true,
         default: '#'
     },
 
-    Host:{
+    host:{
         type: String,
         require: true,
         default: '#'
     },
 
-    Statu:{
+    status:{
         type: Boolean,
         require: true,
     

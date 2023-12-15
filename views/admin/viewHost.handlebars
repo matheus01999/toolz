@@ -1,0 +1,77 @@
+<div class="m-4 card">
+    <div class="card-header">{{hosts.apelido}}</div>
+    <div class="card-body">
+        <form class="m-4">
+            <div class="form-group">
+                <label for="apelido">Apelido</label>
+                <input type="text" class="form-control" id="apelido" value="{{hosts.apelido}}">
+                <br>
+                <label for="apelido">Hostname</label>
+                <input type="text" class="form-control" id="apelido" value="{{{hosts.hostname}}}" readonly>
+                <br>
+                <label for="apelido">IP</label>
+                <input type="text" class="form-control" id="hostIP" value="{{{hosts.hostIP}}}" readonly>
+                <br>
+                <div>Gerenciador</div>
+                <hr>
+                <div>
+                    <h6>Memory</h6>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                            role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <br>
+                </div>
+
+                <div>
+                    <h6>CPU</h6>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                            role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <br>
+                </div>
+
+                <div>
+                    <h6>Disk</h6>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                            role="progressbar" style="width: 30%" aria-valuenow="10" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <br>
+                <div>Serviços
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".addService" style="float: right;">Show</button>
+                </div>
+                <br>
+                <hr>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<!-- Large modal -->
+
+<div class="modal fade addService" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">Adicionar Serviço</div>
+            <form class="m-4" action="/admin/services/new" method="post">
+                <div class="form-group">
+                    <label for="apelido">Nome</label>
+                    <input type="text" class="form-control" id="nome"  name="nome">
+                    <br>
+                    <label for="apelido">Hostname</label>
+                    <input type="text" class="form-control" id="host" name="host" value="{{{hosts.hostname}}}" readonly>
+                    <br>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary" style="float: right;">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
